@@ -15,6 +15,9 @@ cd xfitter
 ```
 
 ## Step 3. Replace the Dockerfile with the one in this repository
+
+in the xfitter folder that you just cloned, there is a Dockerfile, replace it with the Dockerfile_xfitter in this repository
+
 ```
 rm Dockerfile
 cp /path/to/this/repository/Dockerfile_xfitter ./Dockerfile
