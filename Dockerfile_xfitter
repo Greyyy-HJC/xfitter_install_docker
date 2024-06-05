@@ -1,0 +1,37 @@
+FROM gitlab-registry.cern.ch/fitters/xfitter:with_docker
+
+# set the working directory
+WORKDIR /home/xfitter
+
+# copy and install xfitter
+COPY . .
+RUN ./tools/install-xfitter deps
+RUN . ./setup.sh
+RUN ./make.sh install
+
+# update and install dependencies
+RUN yum install -y \
+    vim \
+    wget \
+    curl \
+    && yum clean all
+
+# install oh-my-bash
+RUN git clone https://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash \
+    && cp ~/.oh-my-bash/templates/bashrc.osh-template ~/.bashrc
+
+# install LHAPDF
+RUN wget https://lhapdf.hepforge.org/downloads/LHAPDF-6.5.4.tar.gz \
+    && tar -xzf LHAPDF-6.5.4.tar.gz \
+    && cd LHAPDF-6.5.4 \
+    && ./configure --prefix=/home/xfitter/deps/lhapdf \
+    && make \
+    && make install
+
+# set the environment variables
+RUN echo 'export PATH=$PATH:/home/xfitter/deps/lhapdf/bin' >> ~/.bashrc \
+    && echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/xfitter/deps/qcdnum-18-00-00/lib/.libs:/home/xfitter/deps/qcdnum/lib:/home/xfitter/deps/lhapdf/lib:/home/xfitter/deps/root/lib' >> ~/.bashrc \
+    && echo 'export PATH=$PATH:/home/xfitter/bin' >> ~/.bashrc
+
+# set the entrypoint
+CMD ["/bin/bash"]
