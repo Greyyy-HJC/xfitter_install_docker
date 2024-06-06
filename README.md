@@ -21,4 +21,4 @@ docker run -it --name xfitter_container greyyyhjc/xfitter:camp /bin/bash
 
 ## Step 4. Get into the container
 
-you can use vscode to connect to the container, there is an extension in the vscode called "Remote Explorer", you can use it to connect to the container
+you can use vscode to connect to the container, there is an extension in the vscode called "Dev Containers", you can use it to connect to the container
