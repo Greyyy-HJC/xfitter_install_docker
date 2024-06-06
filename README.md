@@ -22,3 +22,8 @@ docker run -it --name xfitter_container greyyyhjc/xfitter:camp /bin/bash
 ## Step 4. Get into the container
 
 you can use vscode to connect to the container, there is an extension in the vscode called "Dev Containers", you can use it to connect to the container
+
+
+## Tutorial
+
+tutorial examples can be found at https://www.xfitter.org/xFitter/tutorials
