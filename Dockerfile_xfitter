@@ -17,6 +17,7 @@ RUN yum install -y \
     && yum clean all
 
 # install oh-my-bash
+RUN if [ -d "/root/.oh-my-bash" ]; then rm -rf /root/.oh-my-bash; fi
 RUN git clone https://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash \
     && cp ~/.oh-my-bash/templates/bashrc.osh-template ~/.bashrc
 

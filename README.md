@@ -2,41 +2,23 @@
 Install xfitter using docker image
 
 
-## Step 1. Install Docker and git
+## Step 1. Install Docker
+
+install Docker from the official website: https://docs.docker.com/get-docker/
+
+do not use homebrew to install Docker (I failed to install Docker using homebrew)
+
+
+## Step 2. Pull the xfitter image
 ```
-brew install --cask docker
-brew install git
+docker pull greyyyhjc/xfitter:camp
 ```
 
-## Step 2. Clone the repository to the path you want
+## Step 3. Create a container from the image
 ```
-git clone https://gitlab.cern.ch/fitters/xfitter.git
-cd xfitter
-```
-
-## Step 3. Replace the Dockerfile with the one in this repository
-
-in the xfitter folder that you just cloned, there is a Dockerfile, replace it with the Dockerfile_xfitter in this repository
-
-```
-rm Dockerfile
-cp /path/to/this/repository/Dockerfile_xfitter ./Dockerfile
+docker run -it --name xfitter_container greyyyhjc/xfitter:camp /bin/bash
 ```
 
-## Step 4. Build the docker image
+## Step 4. Get into the container
 
-build an image named xfitter_image
-```
-docker build -t xfitter_image .
-```
-
-if you are using M1 mac, you need to build the image with the following command
-```
-docker buildx create --use
-docker buildx build --platform linux/amd64 -t xfitter_image .
-```
-
-## Step 5. Run the docker image in terminal
-```
-docker run -it --name xfitter_container xfitter_image /bin/bash
-```
+you can use vscode to connect to the container, there is an extension in the vscode called "Remote Explorer", you can use it to connect to the container
