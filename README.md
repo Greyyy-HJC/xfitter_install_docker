@@ -24,7 +24,7 @@ docker run -it --name xfitter_container greyyyhjc/xfitter:tutorials /bin/bash
 you can use vscode to connect to the container, there is an extension in the vscode called "Dev Containers", you can use it to connect to the container
 
 
-## Tutorial (Thanks to Yushan Su for share the tutorial materials)
+## Tutorial (Thanks to Yushan for sharing the tutorial materials)
 
 tutorial examples can be found inside the container, you can find them in the following path:
 ```
@@ -37,3 +37,8 @@ ln -s /home/xfitter/datafiles datafiles
 ```
 
 this will create a symbolic link to the data files in the current directory, so that the example can find the data files
+
+## Let me know if you have any questions or suggestions
+```
+jinchen@umd.edu
+```
